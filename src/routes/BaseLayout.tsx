@@ -4,6 +4,7 @@ import Footer from '@/components/Footer/Footer'
 import {
     Outlet,
 } from 'react-router-dom'
+import './BaseLayoutStyles.css'
 
 // loading component for suspense fallback
 const Loader = () => (
@@ -13,11 +14,15 @@ const Loader = () => (
 );
 
 const BaseLayout: FC = () => {
-    return <Suspense fallback={<Loader />}>
-        <Header />
-        <Outlet />
-        <Footer />
-    </Suspense>
+    return (
+        <Suspense fallback={<Loader />}>
+            <Header />
+            <main>
+                <Outlet />
+            </main>
+            <Footer />
+        </Suspense>
+    );
 }
 
 export default BaseLayout
